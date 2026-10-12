@@ -273,3 +273,65 @@ footer {
 		font-size: 12px;
 	}
 }
+
+/* 뉴스레터 구독 결과 안내 */
+/* 이메일 안내 문구 */
+.subscribe-message {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin-top: 12px;
+	font-size: 14px;
+	line-height: 1.6;
+	overflow-wrap: anywhere;
+}
+
+.subscribe-message:empty {
+	display: none;
+}
+
+.subscribe-message.error {
+	color: #d93025;
+}
+
+.subscribe-message.success {
+	color: #188038;
+}
+
+/* 버튼 상태 */
+#subscribe-form button:disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+/* 키보드 접근성 */
+#subscribe-form input:focus-visible,
+#subscribe-form button:focus-visible {
+	outline: 2px solid #0762ff;
+	outline-offset: 3px;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+	#subscribe-form {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 10px;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	#subscribe-form input,
+	#subscribe-form button,
+	.subscribe-message {
+		width: 100%;
+		min-width: 0;
+	}
+
+	.subscribe-message {
+		margin-top: 10px;
+		font-size: 13px;
+	}
+}

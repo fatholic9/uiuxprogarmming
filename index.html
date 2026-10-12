@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>원신: 캐릭터 공략, 육성 가이드 | GENSHIN.GG</title>
 		<link rel="stylesheet" href="style.css" />
+		<script src="script.js" defer></script>
 	</head>
 	<body>
 		<!--
@@ -164,7 +165,6 @@
 				</ul>
 			</section>
 
-			<!-- 구독 영역 -->
 			<section id="subscribe">
 				<h2>최신 업데이트 소식 받기</h2>
 
@@ -173,7 +173,7 @@
 					이벤트 정보를 놓치지 마세요.
 				</p>
 
-				<form action="#" method="post">
+				<form id="subscribe-form" novalidate>
 					<label for="email">이메일</label>
 
 					<input
@@ -181,11 +181,22 @@
 						id="email"
 						name="email"
 						placeholder="이메일을 입력하세요"
+						autocomplete="email"
 						required
 					/>
 
-					<button type="submit">업데이트 소식 받기</button>
+					<button type="submit" id="subscribe-button">
+						업데이트 소식 받기
+					</button>
 				</form>
+
+				<!-- 이메일 관련 안내 문구 전용 영역 -->
+				<div
+					id="subscribe-message"
+					class="subscribe-message"
+					role="status"
+					aria-live="polite"
+				></div>
 			</section>
 		</main>
 
