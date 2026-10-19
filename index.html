@@ -4,51 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>원신: 캐릭터 공략, 육성 가이드 | GENSHIN.GG</title>
+
+		<!-- CSS 스타일 시트 -->
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js" defer></script>
 	</head>
 	<body>
-		<!--
-			[서비스 기획 및 UX 계획 요약]
-
-			1. 사용자 (Target User)
-			   - 원신(Genshin Impact)을 즐기며 캐릭터 육성 방법과 최신 메타 정보를
-			     효율적으로 찾고자 하는 유저
-
-			2. 서비스 목적 (Purpose)
-			   - 캐릭터별 상세 공략과 신규 무기 및 육성 정보를 제공하여
-			     유저가 효율적으로 캐릭터를 육성하고 게임을 플레이하도록 지원
-
-			3. 핵심 행동 (Core Action)
-			   - 캐릭터 공략 탐색
-			   - 신규 무기 정보 확인
-			   - 최신 업데이트 뉴스레터 이메일 구독
-
-			4. 제공 정보 (Information)
-			   - 캐릭터별 육성 가이드, 능력치, 스킬 및 추천 무기
-			   - 최신 캐릭터: 보댜니차, 베스나 등
-			   - 신규 무기: 파도의 찬송가, 나비의 우화 등
-			   - 최신 업데이트 및 이벤트 소식
-
-			5. UX 정보 구성 순서 (Information Architecture)
-			   1단계: 서비스 소개를 통해 웹사이트의 목적을 파악한다.
-			   2단계: 이용 방법 3단계를 확인하여 서비스 이용 흐름을 이해한다.
-			   3단계: 캐릭터별 공략에서 원하는 캐릭터의 정보를 탐색한다.
-			   4단계: 무기 정보에서 무기의 특성과 추천 정보를 확인한다.
-			   5단계: 이메일 구독을 통해 최신 업데이트 소식을 받아본다.
-
-			6. 이용 방법 (User Flow)
-			   1단계: 원하는 캐릭터를 선택하고 캐릭터별 공략을 확인한다.
-			   2단계: 추천 무기와 무기별 상세 정보를 확인한다.
-			   3단계: 이메일을 등록하여 최신 업데이트 소식을 구독한다.
-
-			7. UX 설계 방향
-			   - 상단 메뉴를 통해 캐릭터, 무기, 구독 영역으로 쉽게 이동할 수 있도록 한다.
-			   - 이용 방법을 순서 있는 목록으로 제공하여 서비스 이용 절차를 명확하게 안내한다.
-			   - 캐릭터와 무기 정보를 구분하여 필요한 정보를 빠르게 찾도록 한다.
-			   - 이메일 구독 영역을 통해 최신 정보를 지속적으로 확인할 수 있도록 유도한다.
-		-->
-
 		<!-- 헤더 영역 -->
 		<header>
 			<h1>GENSHIN.GG: 원신 캐릭터 공략 및 육성 가이드</h1>
@@ -62,34 +23,62 @@
 			<nav aria-label="주요 메뉴">
 				<ul>
 					<li>
-						<a href="#characters">캐릭터</a>
+						<a href="#characters" class="nav-link" data-tab="characters"
+							>캐릭터</a
+						>
 					</li>
 					<li>
-						<a href="#weapons">무기</a>
+						<a href="#weapons" class="nav-link" data-tab="weapons">무기</a>
 					</li>
 					<li>
-						<a href="#subscribe">서비스 구독하기</a>
+						<a href="#subscribe" class="nav-link" data-tab="subscribe"
+							>서비스 구독하기</a
+						>
 					</li>
 				</ul>
 			</nav>
 		</header>
 
 		<main>
-			<!-- 서비스 소개 영역 -->
+			<!-- 탭 메뉴 버튼 (요구사항 3: 탭 3개 구현) -->
+			<div class="tab-container" role="tablist">
+				<button
+					class="tab-button active"
+					data-tab="characters"
+					role="tab"
+					aria-selected="true"
+				>
+					캐릭터 정보
+				</button>
+				<button
+					class="tab-button"
+					data-tab="weapons"
+					role="tab"
+					aria-selected="false"
+				>
+					신규 무기
+				</button>
+				<button
+					class="tab-button"
+					data-tab="subscribe"
+					role="tab"
+					aria-selected="false"
+				>
+					뉴스레터 구독
+				</button>
+			</div>
+
+			<!-- 서비스 소개 및 이용 방법 (상단 고정 안내) -->
 			<section id="about">
 				<h2>서비스 소개</h2>
-
 				<h3>캐릭터별 정보 확인, 육성 가이드, 최신 업데이트 전략 제공!</h3>
 			</section>
 
-			<!-- 이용 방법 영역: 3단계 순서 있는 목록 -->
 			<section id="how-to-use">
 				<h2>이용 방법</h2>
-
 				<p>
 					아래의 3단계에 따라 캐릭터 공략을 확인하고 최신 소식을 받아보세요.
 				</p>
-
 				<ol>
 					<li>
 						<h3>캐릭터 공략 확인하기</h3>
@@ -114,80 +103,89 @@
 				</ol>
 			</section>
 
-			<!-- 캐릭터 영역 -->
-			<section id="characters">
+			<!-- 탭 1: 캐릭터 영역 (Click / Change 이벤트 적용) -->
+			<section id="characters" class="tab-content active" role="tabpanel">
 				<h2>캐릭터별 정보 확인</h2>
-
 				<p>
 					원신의 다양한 캐릭터에 대한 상세한 정보를 확인하고, 각 캐릭터의
 					능력치, 스킬, 무기 추천 등을 알아보세요.
 				</p>
 
-				<h3>최신 캐릭터 공략</h3>
+				<div class="filter-box">
+					<label for="element-select">속성 필터:</label>
+					<select id="element-select">
+						<option value="all">전체 속성</option>
+						<option value="hydro">물 속성</option>
+						<option value="anemo">바람 속성</option>
+					</select>
+				</div>
 
-				<ul>
-					<li>
+				<h3>최신 캐릭터 공략</h3>
+				<ul class="grid-list">
+					<li class="grid-card character-card" data-element="hydro">
 						<a href="#">보댜니차</a>
 						<img src="assets/images/bodonicha.jpg" alt="보댜니차 정면 이미지" />
 					</li>
-
-					<li>
+					<li class="grid-card character-card" data-element="anemo">
 						<a href="#">베스나</a>
 						<img src="assets/images/besna.jpg" alt="베스나 정면 이미지" />
 					</li>
 				</ul>
 			</section>
 
-			<!-- 무기 영역 -->
-			<section id="weapons">
+			<!-- 탭 2: 무기 영역 -->
+			<section id="weapons" class="tab-content" role="tabpanel">
 				<h2>무기 정보</h2>
-
 				<p>
 					원신의 다양한 무기에 대한 정보를 확인하고, 각 무기의 특성과 추천
 					캐릭터를 알아보세요.
 				</p>
 
 				<h3>신규 출시 무기</h3>
-
-				<ul>
-					<li>
+				<ul class="grid-list">
+					<li class="grid-card">
 						<a href="#">파도의 찬송가</a>
 						<img
 							src="assets/images/보댜니차전무.jpg"
 							alt="보댜니차 전용 무기"
 						/>
 					</li>
-
-					<li>
+					<li class="grid-card">
 						<a href="#">나비의 우화</a>
 						<img src="assets/images/베스나전무.jpg" alt="베스나 전용 무기" />
 					</li>
 				</ul>
 			</section>
 
-			<section id="subscribe">
+			<!-- 탭 3: 구독 영역 (Input 이벤트 실시간 검증 및 상태 변경 적용) -->
+			<section id="subscribe" class="tab-content" role="tabpanel">
 				<h2>최신 업데이트 소식 받기</h2>
-
 				<p>
 					원신의 최신 업데이트 소식을 이메일로 받아보세요. 새로운 캐릭터, 무기,
 					이벤트 정보를 놓치지 마세요.
 				</p>
 
-				<form id="subscribe-form" novalidate>
-					<label for="email">이메일</label>
-
+				<form id="subscribe-form">
 					<input
 						type="email"
 						id="email"
-						name="email"
-						placeholder="이메일을 입력하세요"
-						autocomplete="email"
-						required
+						placeholder="이메일 주소를 입력해주세요"
+						aria-describedby="subscribe-message"
 					/>
 
-					<button type="submit" id="subscribe-button">
-						업데이트 소식 받기
+					<button type="submit" id="subscribe-button" disabled>
+						이메일을 입력해주세요
 					</button>
+
+					<button type="button" id="edit-email-button" hidden>
+						이메일 수정
+					</button>
+
+					<div
+						id="subscribe-message"
+						class="subscribe-message"
+						aria-live="polite"
+					></div>
 				</form>
 
 				<!-- 이메일 관련 안내 문구 전용 영역 -->
